@@ -1,0 +1,50 @@
+Credit Card Fraud Detection
+
+Anonymized credit card transactions labeled as fraudulent or genuine
+
+
+Using Logistic Regression and SVM (with RBF kernel) on a highly skewed data set.
+
+Download the data set from here:
+https://www.kaggle.com/dalpozz/creditcardfraud
+
+Ideas:
+______
+
+-->Dropped the time column from the original dataset and also normalized the amount column. (Done)
+
+-->Can further analyse each column (feature) to see if we can discard other features. 
+
+-->Can do PCA to project complete data in a meaningful way. Work in progress
+
+-->Use Neural Networks (with more than 1 hidden layers) for classification.
+
+-->Show a comparitive analysis of using different parameters and types of kernels in SVM function calls. 
+	This may not yield much different results.
+
+
+Dependencies:
+_____________
+
+python 3.5
+scikit-learn
+pandas
+numpy (optional)
+tensorflow (comment out, works fine without. Idea is to use tensorflow in future.)
+matplotlib
+
+How to run:
+
+call python ss.py (or python 3, however your env for python 3 is configured)
+For running the script on complete dataset/undersampled dataset uncomment desired line. (Lines 202,203)
+
+Note:
+Please ignore the function using_SVM, it needs proper structuring and further analysis.
+Including graphs for recall on complete data and undersampled data comparing the performance of SVM and Logistic Regression. 
+
+Questions to explore:
+Use of L1/L2 loss function needs further analysis. (Used L2 here, maybe bfgs is faster.)
+Does SVM perform worse on skewed data?
+Is recall a good metric to analyse the performance? It really depends on the data:
+	If false positives are much less tolerable than false negatives. (You do not have cancer but it predicts that you do.)
+(or) the other way around.
