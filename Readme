@@ -35,8 +35,13 @@ matplotlib
 
 How to run:
 
-call python ss.py (or python 3, however your env for python 3 is configured)
-For running the script on complete dataset/undersampled dataset uncomment desired line. (Lines 202,203)
+call python cc.py (or python 3, however your env for python 3 is configured) 
+You can call logistic regression/ SVM seperately using cc_2.py by commenting out appropirate lines.
+Use function printing_Kfold_cross for Log Reg and 
+diff_kernels() for SVM with different kernels (all kernels will run)
+
+pass complete dataset (temp[0],temp[1]) or the undersampled one(temp[2],temp[3]) as parameters to the function.
+SVM runs for really long time on the complete dataset. Adding the graphs for this run.
 
 Note:
 Please ignore the function using_SVM, it needs proper structuring and further analysis.
@@ -48,3 +53,70 @@ Does SVM perform worse on skewed data?
 Is recall a good metric to analyse the performance? It really depends on the data:
 	If false positives are much less tolerable than false negatives. (You do not have cancer but it predicts that you do.)
 (or) the other way around.
+
+
+
+Some results :
+
+
+(C:\ProgramData\Anaconda3) C:\Users\gsk69>m:
+
+(C:\ProgramData\Anaconda3) M:\>cd "Course stuff\Machine Learning\projects\Data Sets\credit card"
+
+(C:\ProgramData\Anaconda3) M:\Course stuff\Machine Learning\projects\Data Sets\credit card>python cc_2.py
+USING Logistic Regression::
+Best Mean: 0.612260 with inverse regularization strength 10.000000
+USING SVM :
+Best Mean: 0.684470 with inverse regularization strength 10.0000 using rbf kernel
+USING SVM :
+Best Mean: 0.754652 with inverse regularization strength 1.0000 using poly kernel
+USING SVM :
+Best Mean: 0.275240 with inverse regularization strength 1.0000 using sigmoid kernel
+
+(C:\ProgramData\Anaconda3) M:\Course stuff\Machine Learning\projects\Data Sets\credit card>
+_______________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________
+currently running  rbf kernel
+USING SVM :
+Best Mean: 0.607521 with inverse regularization strength 1.2800 using rbf kernel
+SVM with rbf took 6244.27 seconds for completion.
+currently running  linear kernel
+USING SVM :
+Best Mean: 0.782996 with inverse regularization strength 0.0200 using linear kernel
+SVM with linear took 1137.45 seconds for completion.
+currently running  sigmoid kernel
+USING SVM :
+Best Mean: 0.274755 with inverse regularization strength 0.1600 using sigmoid kernel
+SVM with sigmoid took 1676.50 seconds for completion.
+currently running  poly kernel
+USING SVM :
+Best Mean: 0.711231 with inverse regularization strength 0.1600 using poly kernel
+SVM with poly took 1000.95 seconds for completion.
+
+
+____________________________________________________________________________________
+
+Run details : 
+Used BaggingClassifier with default values and base classifier = SVM (SVC/LinearSVC)
+All kernels with max_iter set to 1000
+Used LinearSVC for linear kernel
+
+
+currently running  rbf kernel
+USING SVM :
+Best Mean: 0.604330 with inverse regularization strength 1.2800 using rbf kernel
+rbf took 3615.35 seconds for completion.
+currently running  linear kernel
+USING SVM :
+Best Mean: 0.727653 with inverse regularization strength 1.2800 using linear kernel
+linear took 6100.82 seconds for completion.
+currently running  sigmoid kernel
+USING SVM :
+Best Mean: 0.274755 with inverse regularization strength 0.3200 using sigmoid kernel
+sigmoid took 1713.92 seconds for completion.
+currently running  poly kernel
+USING SVM :
+Best Mean: 0.703166 with inverse regularization strength 0.3200 using poly kernel
+poly took 1635.25 seconds for completion.
+
+Total run time = 13065.34s = 3h 37m
